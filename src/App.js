@@ -12,21 +12,21 @@ function App() {
   const [filteredTodos, setFilteredTodos] = useState([])
 
   useEffect(() => {
+    const handleFilter = () => {
+      switch (status) {
+        case 'complete':
+          setFilteredTodos(todos.filter(item => item.complete === true))
+          break
+        case 'active':
+          setFilteredTodos(todos.filter(item => item.complete === false))
+          break
+        default:
+          setFilteredTodos(todos)
+      }
+    }
     handleFilter()
   }, [todos, status])
 
-  const handleFilter = () => {
-    switch (status) {
-      case 'complete':
-        setFilteredTodos(todos.filter(item => item.complete === true))
-        break
-      case 'active':
-        setFilteredTodos(todos.filter(item => item.complete === false))
-        break
-      default:
-        setFilteredTodos(todos)
-    }
-  }
 
   return (
     <div className={`wrapper ${isDarkMode ? 'dark' : 'light'}`}>
