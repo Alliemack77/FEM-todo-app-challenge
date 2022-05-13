@@ -1,23 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/Header'
+import Form from './components/Form'
+import TodoList from './components/TodoList'
+import './scss/main.scss';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false)
+  const [textInput, setTextInput] = useState('')
+  const [todos, setTodos] = useState([])
+  const [status, setStatus] = useState('all')
+  const [filteredTodos, setFilteredTodos] = useState([])
+
+  useEffect(() => {
+    handleFilter()
+  }, [todos, status])
+
+  const handleFilter = () => {
+    switch (status) {
+      case 'complete':
+        setFilteredTodos(todos.filter(item => item.complete === true))
+        break
+      case 'active':
+        setFilteredTodos(todos.filter(item => item.complete === false))
+        break
+      default:
+        setFilteredTodos(todos)
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`wrapper ${isDarkMode ? 'dark' : 'light'}`}>
+      <div className='container'>
+        <Header 
+          isDarkMode={isDarkMode} 
+          setIsDarkMode={setIsDarkMode}
+        />
+        <Form 
+          textInput={textInput}
+          setTextInput={setTextInput}
+          todos={todos}
+          setTodos={setTodos}
+          />
+        <TodoList 
+          todos={todos}
+          setTodos={setTodos}
+          status={status}
+          setStatus={setStatus}
+          filteredTodos={filteredTodos}
+          />
+      </div>
     </div>
   );
 }
