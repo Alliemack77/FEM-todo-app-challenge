@@ -25,12 +25,8 @@ Users should be able to:
 - Toggle light and dark mode
 - **Bonus**: Drag and drop to reorder items on the list
 
-### Screenshot
-
-[](..%5C..%5C..%5C..%5CDownloads%5CScreenshot%202022-05-12%20at%2017-44-41%20Your%20Daily%20Todos.png)
-
 ### See the live solution
 
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+[Todo App Live](https://todaystasks.netlify.app)
 
 
