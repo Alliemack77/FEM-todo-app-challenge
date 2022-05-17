@@ -7,7 +7,14 @@ import { useEffect, useState } from 'react';
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false)
   const [textInput, setTextInput] = useState('')
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState(() => {
+    const retrievedTodos = localStorage.getItem('todos')
+    if(retrievedTodos) {
+      return JSON.parse(retrievedTodos)
+    } else {
+      return []
+    }
+  })
   const [status, setStatus] = useState('all')
   const [filteredTodos, setFilteredTodos] = useState([])
 
@@ -26,6 +33,10 @@ function App() {
     }
     handleFilter()
   }, [todos, status])
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
 
 
   return (
