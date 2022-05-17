@@ -29,7 +29,7 @@ function App() {
 
 
   return (
-    <div className={`wrapper ${isDarkMode ? 'dark' : 'light'}`}>
+    <main className={`wrapper ${isDarkMode ? 'dark' : 'light'}`}>
       <div className='container'>
         <Header 
           isDarkMode={isDarkMode} 
@@ -49,7 +49,7 @@ function App() {
           filteredTodos={filteredTodos}
           />
       </div>
-    </div>
+    </main>
   );
 }
 

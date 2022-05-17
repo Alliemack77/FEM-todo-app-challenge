@@ -28,9 +28,6 @@ const Form = ({textInput, setTextInput, todos, setTodos}) => {
             setTextInput('')
             setInputAlert('')
         }
-
-        
-
     }
 
 
@@ -49,7 +46,7 @@ const Form = ({textInput, setTextInput, todos, setTodos}) => {
                         onChange={handleInputChange}
                     />
                 </div>
-                <button className='add-btn text-light-grey'>
+                <button className='add-btn text-light-grey' aria-label='Add a todo'>
                     <AiOutlinePlus />
                 </button>
             </form>
